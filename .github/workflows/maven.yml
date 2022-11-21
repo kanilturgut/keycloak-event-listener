@@ -20,9 +20,5 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - run: mvn -B package --file pom.xml -DskipTests
-    - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
-    - uses: actions/upload-artifact@v3
-      with:
-        name: Package
-        path: staging
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
